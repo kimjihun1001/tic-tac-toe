@@ -636,20 +636,27 @@ namespace TicTacToe
                     }
                     // 한 칸 체크. 여기가 제일 어려운 듯 
                     // 모서리에 둘 경우에는 가운데에 둬야 함 
-                    else if ((two == "O" || four == "O" || six == "O" || eight == "O") && five != "X")
+                    else if ((two == "O" || four == "O" || six == "O" || eight == "O") && five != "X" && five != "O")
                     {
                         ComputerPaintShape("X", "5");
                         break;
                     }
+
+                    // 가운데가 O인데, 꼭짓점도 O일 경우, 나머지 꼭짓점을 막아야 함.
+                    else if (five == "O" && (one == "O" || three == "O" || seven == "O" || nine == "O"))
+                    {
+                        ComputerPaintShape("X", FindBlank());
+                        break;
+                    }
                     // 꼭짓점에 둘 경우에는 옆에 둬야 함
                     // 1, 3에 두면 2
-                    else if ((one == "O" || three == "O") && two != "X")
+                    else if ((one == "O" || three == "O") && two != "X" && two != "O")
                     {
                         ComputerPaintShape("X", "2");
                         break;
                     }
                     // 7, 9에 두면 8
-                    else if ((seven == "O" || nine == "O") && eight != "X")
+                    else if ((seven == "O" || nine == "O") && eight != "X" && eight != "O")
                     {
                         ComputerPaintShape("X", "8");
                         break;
